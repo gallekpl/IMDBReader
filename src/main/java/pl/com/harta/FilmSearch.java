@@ -23,6 +23,7 @@ public class FilmSearch {
             doc = Jsoup.connect("https://www.imdb.com/find?q=" + searchString + "&s=tt").get();
         }
         List<Element> resultText = doc.getElementsByClass("result_text");
+        list.clear();
         for (Element res:resultText) {
             String linkRes = res.child(0).attr("href").split("\\?ref")[0];
             if (res.text().toLowerCase().matches("(.*)"+searchString.toLowerCase()+"(.*)")) {
@@ -47,7 +48,7 @@ public class FilmSearch {
                 ratingString = elementRating.text();
                 ratingString = ratingString.split(" ")[0];
             }
-            sb.append(entry.getValue()).append(" ----> ").append(ratingString).append("\n");
+            sb.append(ratingString).append(" ----> ").append(entry.getValue()).append("\n");
 
         }
         return sb.toString();

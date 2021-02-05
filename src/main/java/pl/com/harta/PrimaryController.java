@@ -11,14 +11,13 @@ public class PrimaryController {
     TextField searchField;
     @FXML
     TextArea ratingTextArea;
-
+    FilmSearch fs = new FilmSearch();
     @FXML
     private void switchToSecondary() throws IOException {
         App.setRoot("secondary");
     }
     @FXML
     private void setTextArea() throws IOException {
-        FilmSearch fs = new FilmSearch();
         fs.setSearchString(searchField.getText());
         fs.getResult();
         ratingTextArea.setText(fs.getRating());
