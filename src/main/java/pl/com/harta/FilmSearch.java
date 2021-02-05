@@ -24,8 +24,7 @@ public class FilmSearch {
         }
         List<Element> resultText = doc.getElementsByClass("result_text");
         for (Element res:resultText) {
-            String lnk = res.child(0).attr("href");
-            String linkRes = lnk.split("\\?ref")[0];
+            String linkRes = res.child(0).attr("href").split("\\?ref")[0];
             if (res.text().toLowerCase().matches("(.*)"+searchString.toLowerCase()+"(.*)")) {
                 list.put(linkRes, res.text());
             }
@@ -48,7 +47,7 @@ public class FilmSearch {
                 ratingString = elementRating.text();
                 ratingString = ratingString.split(" ")[0];
             }
-            sb.append(entry.getValue()).append("--->").append(ratingString).append("\n");
+            sb.append(entry.getValue()).append(" ----> ").append(ratingString).append("\n");
 
         }
         return sb.toString();
