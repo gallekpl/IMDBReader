@@ -57,16 +57,9 @@ public class FilmSearch {
     public FilmSearch() {
     }
 
-    public String getSearchString() {
-        return searchString;
-    }
-
     public void setSearchString(String searchString) {
         this.searchString = searchString;
     }
 
-    public HashMap<String, String> getLinks() {
-        return list;
-    }
 }
 
