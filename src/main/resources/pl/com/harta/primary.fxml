@@ -10,7 +10,7 @@
    </padding>
    <Label text="IMDB Search" />
    <HBox>
-      <TextField fx:id="searchField" promptText="Use &quot;&quot; for exact match" HBox.hgrow="ALWAYS" />
+      <TextField fx:id="searchField" promptText="Use &quot;&quot; for exact match" HBox.hgrow="ALWAYS" focusTraversable="false" />
       <Button onAction="#setTextArea" prefWidth="80.0" text="Search" />
       <padding>
          <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
