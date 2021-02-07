@@ -1,6 +1,11 @@
 package pl.com.harta;
 
 
+import javafx.concurrent.Task;
+import javafx.fxml.FXML;
+import javafx.scene.Parent;
+import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -14,6 +19,7 @@ public class FilmSearch {
     Document doc;
     String searchString;
     HashMap<String, String> list = new HashMap<>();
+
 
     public void getResult() throws IOException {
         if(searchString.contains("\"")) {
@@ -32,27 +38,7 @@ public class FilmSearch {
         }
     }
 
-    public String getRating() throws IOException {
-        StringBuilder sb = new StringBuilder();
-        String ratingString;
-        Document docRating;
-        Element elementRating;
-        for (HashMap.Entry<String, String> entry : list.entrySet()) {
 
-            docRating = Jsoup.connect("https://www.imdb.com" + entry.getKey()).get();
-            elementRating = docRating.getElementsByClass("imdbRating").before("pro-logo-main-tittle").first();
-
-            if (elementRating==null) {
-                ratingString = "N/A";
-            } else {
-                ratingString = elementRating.text();
-                ratingString = ratingString.split(" ")[0];
-            }
-            sb.append(ratingString).append(" ----> ").append(entry.getValue()).append("\n");
-
-        }
-        return sb.toString();
-    }
 
     public FilmSearch() {
     }
